@@ -8,13 +8,10 @@ _you-get () {
     opts_without_arg=(
         -V --version -h --help -i --info -u --url --json -n --no-merge
         --no-caption -f --force --no-proxy -d --debug
-    )
-    opts_with_arg=(
         -F --format -O --output-filename -o --output-dir -p --player
         -c --cookies -x --http-proxy -y --extractor-proxy -t --timeout
     )
 
-    # Do not complete non option names
     [[ $cur == -* ]] || return 1
 
     # Do not complete when the previous arg is an option expecting an argument
@@ -24,7 +21,6 @@ _you-get () {
 
     # Complete option names
     COMPREPLY=( $(compgen -W "${opts_without_arg[*]} ${opts_with_arg[*]}" \
-                          -- "$cur") )
     return 0
 }
 
